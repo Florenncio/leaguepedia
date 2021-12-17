@@ -3,12 +3,12 @@ import json
 site = mwclient.Site('lol.fandom.com', path='/')
 
 teamName = 'intz'
-response = site.api('cargoquery',
+Players = site.api('cargoquery',
                     limit='max',
                     tables="Players",
                     fields="ID,Name,Country,Age,Role",
                     where=f"Team like '{teamName}'"
                     )
 
-jsonDict = json.dumps(response, indent=2)
+jsonDict = json.dumps(Players['cargoquery'], indent=2)
 print(jsonDict)
